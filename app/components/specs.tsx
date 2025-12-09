@@ -1,45 +1,64 @@
-import { Check } from "lucide-react";
+"use client";
+import { useRef } from "react";
+import deviceTech from "@/public/assets/cruvia-helmet.png";
 import Image from "next/image";
-import helmet from "@/public/assets/cruvia-helmet.png";
-import { SpecsTabs } from "./specs-tabs";
 
-const Specs = () => {
+const specs = [
+	{ label: "Microcontroller", value: "ESP32" },
+	{ label: "Sensor", value: "MPU6050" },
+	{ label: "Battery", value: "Rechargable Li-ion" },
+	{ label: "Charging", value: "TP4056 module" },
+	{ label: "Vision Model", value: "ESP-32 cam" },
+];
+
+export default function Specs() {
+	const ref = useRef(null);
+
 	return (
-		<>
-			<h2 className="text-4xl md:text-5xl font-bold mb-16 text-[#1D546C] text-center">
-				Premium Specifications
-			</h2>
-			<div className="w-full h-1/2 flex font-[inter] text-[#1D546C]">
-				<div className="w-1/2 flex flex-col items-center justify-center">
-					<div className=" rounded-xl bg-amber-100 border-3 border-amber-300 p-10 gap-10">
-						<h3 className="text-2xl font-semibold mb-6">
-							Technical Excellence
-						</h3>
-						{[
-							"Impact Resistant Polymer Shell",
-							"Multi-Density Foam Padding",
-							"Integrated Ventilation System",
-							"Lightweight Carbon Composite",
-							"Adjustable Fit System",
-							"Moisture-Wicking Interior",
-						].map((spec, idx) => (
-							<div key={idx} className="flex gap-3 items-start">
-								<div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-1">
-									<Check size={14} />
+		<section id="specs" className="relative py-32 overflow-hidden">
+			<div className="container mx-auto px-6 relative z-10">
+				{/* Header */}
+				<div className="text-center mb-16">
+					<h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+						<span className="text-[#76c3e4]">Inside</span>
+						<span> </span>
+						<span className="text-[#1D546C]">CRUVIA</span>
+					</h2>
+
+					<p className="text-lg text-gray-500 max-w-2xl mx-auto">
+						Built with premium components for maximum reliability and
+						sensitivity.
+					</p>
+				</div>
+
+				{/* Grid Layout */}
+				<div className="grid lg:grid-cols-2 gap-16 items-center">
+					{/* Image Section */}
+					<Image src={deviceTech} alt="Helmet" />
+					{/* Specifications Grid */}
+					<div>
+						<span className="inline-block px-4 py-1.5 rounded-full bg-amber-200 border border-amber-500 text-[#1D546C] text-sm font-medium mb-6">
+							Technical Specifications
+						</span>
+
+						<div className="grid grid-cols-1 gap-4">
+							{specs.map((spec, index) => (
+								<div
+									key={index}
+									className="p-4 rounded-xl bg-amber-100 border border-amber-200 shadow-sm shadow-amber-400"
+								>
+									<div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+										{spec.label}
+									</div>
+									<div className="font-semibold text-[#1D546C]">
+										{spec.value}
+									</div>
 								</div>
-								<span className="text-lg">{spec}</span>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
-
-				<div className="w-1/2">
-					<Image src={helmet} alt="helmet" />
-				</div>
 			</div>
-			<SpecsTabs />
-		</>
+		</section>
 	);
-};
-
-export default Specs;
+}
