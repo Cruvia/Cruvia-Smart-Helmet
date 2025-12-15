@@ -8,7 +8,6 @@ const specs = [
 	{ label: "Sensor", value: "MPU6050" },
 	{ label: "Battery", value: "Rechargable Li-ion" },
 	{ label: "Charging", value: "TP4056 module" },
-	{ label: "Vision Model", value: "ESP-32 cam" },
 ];
 
 export default function Specs() {

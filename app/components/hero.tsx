@@ -10,31 +10,31 @@ const HeroSection = () => {
 				<Image src={helmet} alt="helmet" />
 			</div>
 			<div className="w-1/2 flex flex-col items-start">
-				<h1 className="text-3xl md:4xl lg:text-5xl font-bold font-[inter] text-amber-400">
+				<h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-[inter] text-amber-400">
 					CRUVIA SMART HELMET
 				</h1>
-				<p className="text-md md:lg lg:text-xl font-[inter] italic text-amber-100 mt-1">
+				<p className="text-md md:text-lg lg:text-xl font-[inter] italic text-amber-100 mt-1">
 					Transforming helmets into Smart Guardians
 				</p>
 
-				<p className="text-xs md:md lg:text-lg font-barlow text-white mt-10 font-[inter]">
+				<p className="text-sm md:text-md lg:text-lg font-barlow text-white mt-10 font-[inter]">
 					Experience the revolution in protective headgear. Cruvia combines
 					cutting-edge safety technology with premium design to protect what
 					matters most. We strive to enhance safety, connectivity, and peace of
 					mind for the riders with intelligent and smart helmets.
 				</p>
 
-				<div className="flex gap-5">
+				<div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center sm:items-start">
 					<Link
 						href="#features"
-						className="px-8 py-3 bg-amber-100 hover:bg-amber-400 font-[inter] text-[#0C2B4E] rounded-lg font-bold flex items-center justify-center gap-2 mt-10"
+						className="w-full sm:w-auto px-8 py-3 bg-amber-100 hover:bg-amber-400 font-[inter] text-[#0C2B4E] rounded-lg font-bold flex items-center justify-center gap-2 mt-6 sm:mt-10"
 					>
 						Explore <ArrowRight size={18} />
 					</Link>
 
 					<Link
 						href="#contact"
-						className="px-8 py-3 bg-amber-100 hover:bg-amber-400 font-[inter] text-[#0C2B4E] rounded-lg font-bold flex items-center justify-center mt-10"
+						className="w-full sm:w-auto px-8 py-3 bg-amber-100 hover:bg-amber-400 font-[inter] text-[#0C2B4E] rounded-lg font-bold flex items-center justify-center mt-0 sm:mt-10"
 					>
 						Learn More
 					</Link>

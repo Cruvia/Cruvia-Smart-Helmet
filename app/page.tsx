@@ -5,6 +5,7 @@ import Features from "./components/features";
 import Specs from "./components/specs";
 import JoinCommunity from "./components/join-community";
 import Footer from "./components/footer";
+import FAQSection from "./components/faq-section";
 
 export default function Home() {
 	return (
@@ -20,6 +21,8 @@ export default function Home() {
 
 			<div id="contact"></div>
 			<JoinCommunity />
+			<div id="contact-form"></div>
+			<FAQSection />
 			<Footer />
 		</>
 	);

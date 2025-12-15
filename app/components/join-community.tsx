@@ -16,7 +16,7 @@ const JoinCommunity = () => {
 						<button
 							onClick={() => {
 								document
-									.getElementById("contact")
+									.getElementById("contact-form")
 									?.scrollIntoView({ behavior: "smooth" });
 							}}
 							className="px-8 py-3 bg-amber-100 hover:bg-amber-400 text-[#0C2B4E] rounded-lg font-medium hover:opacity-90 transition-opacity"
