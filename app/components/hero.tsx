@@ -1,13 +1,19 @@
 "use client";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import helmet from "@/public/assets/cruvia-helmet.png";
+import helmet from "@/public/assets/hero-helmet.jpg";
 import Link from "next/link";
 const HeroSection = () => {
 	return (
 		<div className="h-screen bg-linear-to-r from-[#14465b] to-[#1D546C]/60 flex items-center justify-center">
-			<div className="w-1/2">
-				<Image src={helmet} alt="helmet" />
+			<div className="w-1/2 mx-10">
+				<Image
+					src={helmet}
+					alt="helmet"
+					width={700}
+					height={700}
+					className="rounded-full shadow-2xl shadow-[#132831]"
+				/>
 			</div>
 			<div className="w-1/2 flex flex-col items-start mx-2 sm:mx-0">
 				<h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-[inter] text-amber-400">
