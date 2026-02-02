@@ -87,8 +87,8 @@ export function RotatingCarousel({ cards }: RotatingCarouselProps) {
 									perspective: "1000px",
 								}}
 							>
-								<div className="w-full h-full p-8 border-4 border-amber-400 bg-amber-100 rounded-xl shadow-2xl shadow-amber-500 flex flex-col justify-center items-center gap-5 text-[#1b4f50]">
-									<div className="w-12 h-12 bg-amber-300 rounded-full flex items-center justify-center">
+								<div className="w-full h-full p-8 border-4 border-cyan-400 bg-cyan-100 rounded-xl shadow-2xl shadow-cyan-500 flex flex-col justify-center items-center gap-5 text-[#1b4f50]">
+									<div className="w-12 h-12 bg-cyan-300 rounded-full flex items-center justify-center">
 										{card.icon}
 									</div>
 									<h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
@@ -104,13 +104,13 @@ export function RotatingCarousel({ cards }: RotatingCarouselProps) {
 			<div className="flex justify-center mt-8 gap-5">
 				<button
 					onClick={handlePrev}
-					className="px-3 py-3 border-2 border-[#18467a] bg-[#a5c6ec] rounded-full text-[#18467a] hover:bg-[#759fcf] hover:shadow-xl hover:shadow-[#759fcf]/30"
+					className="px-3 py-3 border-2 border-[#18467a] bg-cyan-300 rounded-full text-[#18467a] hover:bg-cyan-400 hover:shadow-xl"
 				>
 					<ChevronLeft size={18} />
 				</button>
 				<button
 					onClick={handleNext}
-					className="px-3 py-3 border-2 border-[#18467a] bg-[#a5c6ec] rounded-full text-[#18467a] hover:bg-[#759fcf] hover:shadow-xl hover:shadow-[#759fcf]/30"
+					className="px-3 py-3 border-2 border-[#18467a] bg-cyan-300 rounded-full text-[#18467a] hover:bg-cyan-400 hover:shadow-xl"
 				>
 					<ChevronRight size={18} />
 				</button>
@@ -123,7 +123,7 @@ export function RotatingCarousel({ cards }: RotatingCarouselProps) {
 						key={index}
 						onClick={() => setActiveIndex(index)}
 						className={`w-2 h-2 rounded-full transition-all ${
-							index === activeIndex ? " w-6 bg-[#18467a]" : "bg-[#18467a]/50"
+							index === activeIndex ? " w-6 bg-cyan-300" : "bg-cyan-300/50"
 						}`}
 						aria-label={`Go to card ${index + 1}`}
 					/>

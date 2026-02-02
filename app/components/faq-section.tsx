@@ -1,8 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+
+interface IFormData {
+	username: string;
+	user_email: string;
+	subject: string;
+	message: string;
+}
+
 const faqs = [
 	{
 		question: "What features does the Cruvia smart helmet offer?",
@@ -82,31 +93,78 @@ const faqs = [
 		),
 	},
 ];
+
 export default function FAQSection() {
 	const [openIndex, setOpenIndex] = useState<number>(0);
+	const [isLoading, setIsLoading] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<IFormData>();
+	const formRef = useRef<HTMLFormElement>(null);
+
+	const onSubmit = async (data: IFormData) => {
+		console.log("data///////////////////", data);
+		try {
+			if (formRef.current) {
+				setIsLoading(true);
+				const response = await emailjs.sendForm(
+					"service_0h57w8m",
+					"template_v70k97k",
+					formRef.current,
+					"JmEialqyYTLDjUi4k",
+				);
+				console.log("EmailJS response:////////////////////", response);
+				if (response.status === 200) {
+					toast.success(
+						"Thank you for contacting us! We'll get back to you soon.",
+					);
+					setIsLoading(false);
+					reset();
+				}
+			}
+		} catch (error) {
+			console.error("Error sending email:", error);
+			toast.error("Failed to send message. Please try again.");
+			setIsLoading(false);
+		}
+	};
+
 	return (
-		<section className="py-16 px-4 md:px-6 lg:px-8">
+		<section className="py-16 px-4 md:px-6 lg:px-8 bg-linear-to-r from-[#14465b] to-[#1D546C]/60">
 			<div className="max-w-7xl mx-auto">
 				<div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
 					{/* Contact Form */}
 					<div className="order-2 lg:order-1">
-						<div className="bg-[#14465b] rounded-lg p-8 shadow-2xl">
-							<h2 className="text-amber-300 text-xl font-semibold mb-6">
+						<div className="bg-cyan-800 rounded-lg p-8 shadow-2xl">
+							<h2 className="text-cyan-300 text-xl font-semibold mb-6">
 								Contact Us
 							</h2>
 
-							<form className="space-y-6">
+							<form
+								className="space-y-6"
+								ref={formRef}
+								onSubmit={handleSubmit(onSubmit)}
+							>
 								<div>
-									<label className="text-white text-sm mb-2 block ">
+									<label className="text-white text-sm mb-2 block">
 										Your Name
 									</label>
 									<input
+										{...register("username", {
+											required: "Please enter your name",
+										})}
 										type="text"
-										name="username"
 										placeholder="Enter Your Name"
-										required
-										className="w-full text-white placeholder:text-white/40 border border-white p-1"
+										className="w-full text-white placeholder:text-white/40 bg-transparent border border-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400"
 									/>
+									{errors.username && (
+										<span className="text-red-300 text-xs mt-1 block">
+											{errors.username.message}
+										</span>
+									)}
 								</div>
 
 								<div>
@@ -114,12 +172,22 @@ export default function FAQSection() {
 										Your Email
 									</label>
 									<input
+										{...register("user_email", {
+											required: "Please enter your email",
+											pattern: {
+												value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+												message: "Invalid email address",
+											},
+										})}
 										type="email"
-										name="user_email"
 										placeholder="john@example.com"
-										required
-										className="w-full text-white placeholder:text-white/40 border border-white p-1"
+										className="w-full text-white placeholder:text-white/40 bg-transparent border border-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400"
 									/>
+									{errors.user_email && (
+										<span className="text-red-300 text-xs mt-1 block">
+											{errors.user_email.message}
+										</span>
+									)}
 								</div>
 
 								<div>
@@ -127,12 +195,18 @@ export default function FAQSection() {
 										Subject
 									</label>
 									<input
+										{...register("subject", {
+											required: "Please enter a subject",
+										})}
 										type="text"
-										name="subject"
 										placeholder="Enter subject"
-										required
-										className="w-full text-white placeholder:text-white/40 border border-white p-1"
+										className="w-full text-white placeholder:text-white/40 bg-transparent border border-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400"
 									/>
+									{errors.subject && (
+										<span className="text-red-300 text-xs mt-1 block">
+											{errors.subject.message}
+										</span>
+									)}
 								</div>
 
 								<div>
@@ -140,16 +214,22 @@ export default function FAQSection() {
 										Your message (optional)
 									</label>
 									<Textarea
-										name="message"
+										{...register("message")}
 										placeholder="Type your message here..."
 										rows={5}
-										className="w-full text-white placeholder:text-white/40 border border-white p-1"
+										className="w-full text-white placeholder:text-white/40 bg-transparent border border-white p-3 rounded focus:outline-none focus:ring-2 focus:ring-cyan-400"
 									/>
 								</div>
 
-								<button className="w-full bg-amber-400 hover:bg-amber-400/90 text-white font-semibold py-6 rounded-md transition-colors">
-									Submit
-								</button>
+								<div className="flex items-center justify-center">
+									<button
+										type="submit"
+										disabled={isLoading}
+										className="w-1/2 bg-cyan-400 hover:bg-cyan-400/90 text-white font-semibold py-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+									>
+										{isLoading ? "Sending..." : "Submit"}
+									</button>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -157,10 +237,10 @@ export default function FAQSection() {
 					{/* FAQ Section */}
 					<div className="order-1 lg:order-2">
 						<div className="mb-8">
-							<p className="text-amber-300 text-md font-semibold tracking-wide uppercase mb-2">
+							<p className="text-cyan-300 text-md font-semibold tracking-wide uppercase mb-2">
 								QUESTIONS & ANSWERS
 							</p>
-							<h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+							<h2 className="text-3xl md:text-4xl font-bold text-white">
 								See Frequently Asked Questions
 							</h2>
 						</div>
@@ -171,7 +251,7 @@ export default function FAQSection() {
 									key={index}
 									className={`border rounded-lg overflow-hidden transition-all ${
 										openIndex === index
-											? "bg-amber-400 border-amber-400"
+											? "bg-cyan-700 border-cyan-800"
 											: "bg-white border-gray-200"
 									}`}
 								>

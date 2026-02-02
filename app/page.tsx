@@ -11,19 +11,20 @@ export default function Home() {
 	return (
 		<>
 			<Header />
+			<div className="bg-linear-to-br from-[#0a1929] via-[#14465b] to-[#1D546C]">
+				<div id="home"></div>
+				<HeroSection />
 
-			<div id="home"></div>
-			<HeroSection />
+				<div id="features"></div>
+				<Features />
+				<Specs />
 
-			<div id="features"></div>
-			<Features />
-			<Specs />
-
-			<div id="contact"></div>
-			<JoinCommunity />
-			<div id="contact-form"></div>
-			<FAQSection />
-			<Footer />
+				<div id="contact"></div>
+				<JoinCommunity />
+				<div id="contact-form"></div>
+				<FAQSection />
+				<Footer />
+			</div>
 		</>
 	);
 }

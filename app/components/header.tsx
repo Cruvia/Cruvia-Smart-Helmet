@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -15,11 +16,20 @@ const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<nav className="fixed top-0 w-full z-50 bg-amber-100">
+		<nav className="fixed top-0 w-full z-50 bg-cyan-100">
 			<div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between font-[inter]">
-				<div className="text-3xl font-bold">
-					<span className="text-[#1D546C]">Cruvia</span>
-				</div>
+				<a href="#home">
+					<div className="text-3xl font-bold flex flex-row gap-2 items-center">
+						<Image
+							src="/assets/logo.jpeg"
+							alt="Logo"
+							width={50}
+							height={50}
+							className="rounded-lg"
+						/>
+						<span className="text-[#1D546C]">Cruvia</span>
+					</div>
+				</a>
 
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex gap-8 items-center text-sm font-extrabold text-[#1D546C]">
