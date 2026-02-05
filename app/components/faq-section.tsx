@@ -116,7 +116,6 @@ export default function FAQSection() {
 					formRef.current,
 					"JmEialqyYTLDjUi4k",
 				);
-				console.log("EmailJS response:////////////////////", response);
 				if (response.status === 200) {
 					toast.success(
 						"Thank you for contacting us! We'll get back to you soon.",

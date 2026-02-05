@@ -1,3 +1,4 @@
+import { Instagram } from "lucide-react";
 import React from "react";
 
 const Footer = () => {
@@ -5,23 +6,29 @@ const Footer = () => {
 		<footer className="border-t border-border py-12 px-6 text-white">
 			<div className="max-w-5xl mx-auto">
 				<div className="grid md:grid-cols-4 gap-8 mb-8">
-					<div>
+					<div className="flex flex-col gap-2">
 						<h3 className="font-bold text-lg mb-4">Cruvia</h3>
 						<p className="text-sm">
 							Premium protection engineered for your safety.
 						</p>
+						<a
+							href="https://www.instagram.com/cruvia_helmets?igsh=bTFkcm80cDkwcXV1"
+							className="mt-5"
+						>
+							<Instagram className="w-6 h-6" />
+						</a>
 					</div>
 					<div>
 						<h4 className="font-semibold mb-4 text-sm uppercase">Product</h4>
 						<ul className="space-y-2 text-sm">
 							<li>
-								<a href="#">Features</a>
+								<a href="#features">Features</a>
 							</li>
 							<li>
-								<a href="#">Specifications</a>
+								<a href="#specs">Specifications</a>
 							</li>
 							<li>
-								<a href="#">Gallery</a>
+								<a href="#models">Gallery</a>
 							</li>
 						</ul>
 					</div>
@@ -35,7 +42,7 @@ const Footer = () => {
 								<a href="#">Blog</a>
 							</li>
 							<li>
-								<a href="#">Contact</a>
+								<a href="#contact">Contact</a>
 							</li>
 						</ul>
 					</div>
