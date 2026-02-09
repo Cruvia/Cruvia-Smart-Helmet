@@ -19,19 +19,6 @@ export default function Specs() {
 			className="relative py-32 overflow-hidden bg-linear-to-r from-[#14465b] to-[#1D546C]/60"
 		>
 			<div className="container mx-auto px-6 relative z-10">
-				{/* Header */}
-				<div className="text-center mb-16">
-					<h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-						<span className="text-cyan-400">Inside </span>
-						<span className="text-white">CRUVIA</span>
-					</h2>
-
-					<p className="text-lg text-gray-500 max-w-2xl mx-auto">
-						Built with premium components for maximum reliability and
-						sensitivity.
-					</p>
-				</div>
-
 				{/* Grid Layout */}
 				<div className="grid lg:grid-cols-2 gap-16 items-center">
 					{/* Image Section */}
